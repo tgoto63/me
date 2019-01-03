@@ -1,12 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'tgoto63.me',
+    siteUrl: 'https://tgoto63.me',
+    description: 'The portfolio site of tgoto63.',
+    twitter: '@tgoto63'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-json',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'gatsby-starter-default',
         short_name: 'starter',
@@ -14,19 +17,18 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
-      },
+        icon: 'src/assets/icon.png'
+      }
     },
     'gatsby-plugin-offline',
-
-    // Add typescript stack into webpack
-    `gatsby-plugin-typescript`,
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-sass',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `config`,
+        name: 'config',
         path: `${__dirname}/src/data`
       }
     }
-  ],
+  ]
 }

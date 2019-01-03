@@ -9,7 +9,11 @@
     "lib": [
       "dom",
       "esnext"
-    ]
+    ],
+    "typeRoots": [
+      "./typings"
+    ],
+    "allowJs": true
   },
   "include": [
     "./src/**/*"

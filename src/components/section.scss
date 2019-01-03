@@ -1,0 +1,31 @@
+@import "~uikit/src/scss/variables-theme.scss";
+
+.section {
+  .uk-container {
+    padding-top: $container-padding-horizontal;
+    padding-bottom: $container-padding-horizontal;
+    margin-left: $global-medium-margin;
+    margin-right: $global-medium-margin;
+    min-height: calc(100vh - #{$container-padding-horizontal} * 2 - #{$global-medium-margin} * 2);
+  }
+
+  /* Phone landscape and bigger */
+  @media (min-width: $breakpoint-small) {
+    .uk-container {
+      padding-top: $container-padding-horizontal-s;
+      padding-bottom: $container-padding-horizontal-s;
+      min-height: calc(100vh - #{$container-padding-horizontal-s} * 2 - #{$global-medium-margin} * 2);
+    }
+  }
+
+  /* Tablet landscape and bigger */
+  @media (min-width: $breakpoint-medium) {
+    .uk-container {
+      padding-top: $container-padding-horizontal-m;
+      padding-bottom: $container-padding-horizontal-m;
+      margin-left: auto;
+      margin-right: auto;
+      min-height: calc(100vh - #{$container-padding-horizontal-m} * 2 - #{$global-large-margin} * 2);
+    }
+  }
+}

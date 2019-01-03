@@ -1,20 +1,30 @@
 [
   {
-    "name": "Mastodon",
-    "label": "@neet@mastodon.social",
-    "href": "https://mastodon.social/@neet",
-    "fa": "fab fa-mastodon",
-    "color1": "#297ccd",
-    "color2": "white",
-    "tag": "social"
+    "name": "Twitter",
+    "label": "@tgoto63",
+    "href": "https://twitter.com/tgoto63",
+    "icon": "twitter",
+    "color": "#55ACEE"
   },
   {
-    "name": "Email",
-    "label": "n33t5hin@gmail.com",
-    "href": "mailto:n33t5hin@gmail.com",
-    "fa": "fas fa-envelope",
-    "color1": "#1981e0",
-    "color2": "white",
-    "tag": "social"
+    "name": "Facebook",
+    "label": "tgoto63",
+    "href": "https://www.facebook.com/tgoto63",
+    "icon": "facebook",
+    "color": "#3b5998"
+  },
+  {
+    "name": "GitHub",
+    "label": "tgoto63",
+    "href": "mailto:tgoto63[at]gmail.com",
+    "icon": "github",
+    "color": "#000000"
+  },
+  {
+    "name": "e-mail",
+    "label": "tgoto63[at]gmail.com",
+    "href": "mailto:tgoto63@gmail.com",
+    "icon": "mail",
+    "color": "#ffffff"
   }
 ]
