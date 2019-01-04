@@ -8,6 +8,7 @@ import SiteMetadata from './siteMetadata'
 import ScrollReveal from 'scrollreveal'
 import slashReader from '../assets/icon-slash-reader.png'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
+import LazyLoad from 'react-lazyload';
 
 // UIKit is undefined in static build
 if (typeof UIkit.use === 'function') UIkit.use(Icons)
@@ -136,7 +137,9 @@ export default class IndexPage extends React.Component<Props> {
           <div className="uk-grid uk-grid-match uk-child-width-1-2@s">
             <div>
               <h3>Twitter</h3>
+              <LazyLoad height={520}>
               <TwitterTimelineEmbed sourceType="profile" screenName="tgoto63" noHeader noFooter options={{ height: 480 }} />
+              </LazyLoad>
             </div>
             <div>
               <h3>Medium</h3>
