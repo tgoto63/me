@@ -29,6 +29,13 @@ module.exports = {
         name: 'config',
         path: `${__dirname}/src/data`
       }
-    }
+    },
+    {
+      resolve: `gatsby-source-medium`,
+      options: {
+        username: `@tgoto63`,
+        limit: 5,
+      },
+    },
   ]
 }

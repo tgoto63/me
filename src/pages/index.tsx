@@ -26,6 +26,28 @@ interface Props {
         }
       ]
     }
+    allMediumPost: {
+      edges: [
+        {
+          node: {
+            id: string
+            title: string
+            virtuals: [
+              {
+                subtitle: string
+                previewImage: {
+                  imageId: string
+                }
+              }
+            ]
+            author: {
+              name: string
+            }
+            uniqueSlug: string
+          }
+        }
+      ]
+    }
   }
 }
 
@@ -44,7 +66,8 @@ export default class IndexPage extends React.Component<Props> {
   }
 
   render(): React.ReactNode {
-    const data = this.props.data.allSocialAccountsJson
+    const socialAccounts = this.props.data.allSocialAccountsJson
+    const mediumPosts = this.props.data.allMediumPost
 
     return (
       <React.Fragment>
@@ -60,7 +83,7 @@ export default class IndexPage extends React.Component<Props> {
             </div>
             <div>
               <h3>Account</h3>
-              {data.edges.map(edge => (
+              {socialAccounts.edges.map(edge => (
                 <p key={edge.node.name}>
                   <a
                     href={edge.node.href}
@@ -69,7 +92,7 @@ export default class IndexPage extends React.Component<Props> {
                     target="_blank"
                     className="uk-icon-link "
                     uk-icon={'icon: ' + edge.node.icon + '; ratio: 2.5'}
-                    style={{ color: "#ffffff" }}
+                    style={{ color: '#ffffff' }}
                   />
                 </p>
               ))}
@@ -119,13 +142,20 @@ export default class IndexPage extends React.Component<Props> {
               <p>■■■■■■■■■■</p>
             </div>
             <div>
-              {/* Medium */}
               <h3>Medium</h3>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
+              {mediumPosts.edges.map(edge => (
+                <p>
+                  <a
+                    href={'https://medium.com/@catatsuy/' + edge.node.uniqueSlug}
+                    aria-label={edge.node.title}
+                    rel="noopener"
+                    target="_blank"
+                    style={{ color: '#ffffff' }}
+                  >
+                    {edge.node.title}
+                  </a>
+                </p>
+              ))}
             </div>
           </div>
         </Section>
@@ -168,6 +198,24 @@ export const query = graphql`
           color
           name
           href
+        }
+      }
+    }
+    allMediumPost(sort: { fields: [createdAt], order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          virtuals {
+            subtitle
+            previewImage {
+              imageId
+            }
+          }
+          author {
+            name
+          }
+          uniqueSlug
         }
       }
     }
