@@ -6,6 +6,7 @@ import UIkit from 'uikit'
 import Icons from 'uikit/dist/js/uikit-icons'
 import SiteMetadata from './siteMetadata'
 import ScrollReveal from 'scrollreveal'
+import slashReader from '../assets/icon-slash-reader.png'
 
 // UIKit is undefined in static build
 if (typeof UIkit.use === 'function') UIkit.use(Icons)
@@ -53,16 +54,27 @@ interface Props {
 
 export default class IndexPage extends React.Component<Props> {
   componentDidMount() {
-    const config = {
-      origin: 'top',
-      duration: 1000,
+    const h2 = {
+      origin: 'bottom',
+      duration: 300,
       delay: 300,
       scale: 1,
       easing: 'ease',
       reset: true
     }
 
-    ScrollReveal().reveal('.uk-grid', config)
+    ScrollReveal().reveal('h2', h2)
+
+    const grid = {
+      origin: 'bottom',
+      duration: 500,
+      delay: 600,
+      scale: 1,
+      easing: 'ease',
+      reset: true
+    }
+
+    ScrollReveal().reveal('.uk-grid', grid)
   }
 
   render(): React.ReactNode {
@@ -120,21 +132,9 @@ export default class IndexPage extends React.Component<Props> {
 
         <Section color="#f1c40f">
           <h2>Activities</h2>
-          <div className="uk-grid-match uk-child-width-1-3@s uk-grid">
+          <div className="uk-grid uk-grid-match uk-child-width-1-2@s">
             <div>
               <h3>Twitter</h3>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-            </div>
-            <div>
-              <h3>Note</h3>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
-              <p>■■■■■■■■■■</p>
               <p>■■■■■■■■■■</p>
               <p>■■■■■■■■■■</p>
               <p>■■■■■■■■■■</p>
@@ -160,23 +160,33 @@ export default class IndexPage extends React.Component<Props> {
           </div>
         </Section>
 
-        {/* Applications */}
         <Section color="#e74c3c">
           <h2>Activities</h2>
-          <div className="uk-grid-match uk-child-width-1-3@s uk-grid">
+          <div className="uk-grid uk-grid-match uk-child-width-1-2@s">
             <div>
-              {/* Applications */}
               <h3>Applications</h3>
-              <p>slashreader.net</p>
+              <p>
+                <img src={slashReader} width="48px" className="uk-img" alt="Slash Reader" />
+                <a href="https://slashreader.net" aria-label="tgoto63/me on Github" rel="noopener" target="_blank">
+                  Slash Reader
+                </a>
+                <div>「スラッシュリーディング」を勉強できる無料のWebアプリ</div>
+              </p>
             </div>
           </div>
         </Section>
 
         <div className="uk-section" style={{ backgroundColor: '#2c3e50', minHeight: '50vh' }}>
-          <div className="uk-container uk-container-small uk-text-center uktext">
-            <p>
+          <div className="uk-container uk-container-small uk-text-center">
+            <p style={{ paddingTop: '10vh' }}>
               The codes of this site is{' '}
-              <a href="https://github.com/tgoto63/me" aria-label="tgoto63/me on Github" rel="noopener" target="_blank">
+              <a
+                href="https://github.com/tgoto63/me"
+                aria-label="tgoto63/me on Github"
+                rel="noopener"
+                target="_blank"
+                style={{ color: '#DA7D02' }}
+              >
                 HERE
               </a>
               .
