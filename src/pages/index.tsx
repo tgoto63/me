@@ -179,7 +179,7 @@ export default class IndexPage extends React.Component<Props> {
         <div className="uk-section" style={{ backgroundColor: '#2c3e50', minHeight: '50vh' }}>
           <div className="uk-container uk-container-small uk-text-center">
             <p style={{ paddingTop: '10vh' }}>
-              The codes of this site is{' '}
+              Check out all of the{' '}
               <a
                 href="https://github.com/tgoto63/me"
                 aria-label="tgoto63/me on Github"
@@ -187,7 +187,7 @@ export default class IndexPage extends React.Component<Props> {
                 target="_blank"
                 style={{ color: '#DA7D02' }}
               >
-                HERE
+                codes
               </a>
               .
             </p>
