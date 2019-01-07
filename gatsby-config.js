@@ -34,8 +34,14 @@ module.exports = {
       resolve: `gatsby-source-medium`,
       options: {
         username: `@tgoto63`,
-        limit: 5,
-      },
+        limit: 5
+      }
     },
+    {
+      resolve: 'gatsby-source-atom',
+      options: {
+        source: `https://note.mu/tgoto63/atom`
+      }
+    }
   ]
 }

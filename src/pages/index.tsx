@@ -8,7 +8,7 @@ import SiteMetadata from './siteMetadata'
 import ScrollReveal from 'scrollreveal'
 import slashReader from '../assets/icon-slash-reader.png'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
-import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazyload'
 
 // UIKit is undefined in static build
 if (typeof UIkit.use === 'function') UIkit.use(Icons)
@@ -51,6 +51,16 @@ interface Props {
         }
       ]
     }
+    allAtomEntry: {
+      edges: [
+        {
+          node: {
+            title: string
+            link: string
+          }
+        }
+      ]
+    }
   }
 }
 
@@ -80,8 +90,9 @@ export default class IndexPage extends React.Component<Props> {
   }
 
   render(): React.ReactNode {
-    const socialAccounts = this.props.data.allSocialAccountsJson
-    const mediumPosts = this.props.data.allMediumPost
+    const socialAccounts = this.props.data.allSocialAccountsJson;
+    const mediumPosts = this.props.data.allMediumPost;
+    const noteEntries = this.props.data.allAtomEntry;
 
     return (
       <React.Fragment>
@@ -90,7 +101,7 @@ export default class IndexPage extends React.Component<Props> {
         {/*About*/}
         <Section color="#3498db">
           <h2>About</h2>
-          <div className="uk-grid uk-grid-match uk-child-width-1-2@s">
+          <div className="uk-grid uk-child-width-1-2@s">
             <div>
               <h3 className="slide-up">Takayuki Goto</h3>
               <p>I'm a application engineer.</p>
@@ -134,11 +145,17 @@ export default class IndexPage extends React.Component<Props> {
 
         <Section color="#f1c40f">
           <h2>Activities</h2>
-          <div className="uk-grid uk-grid-match uk-child-width-1-2@s">
-            <div>
+          <div className="uk-grid uk-grid-match uk-child-width-1-2@s" uk-grid="masonry: true">
+            <div style={{height:"480px"}}>
               <h3>Twitter</h3>
-              <LazyLoad height={520}>
-              <TwitterTimelineEmbed sourceType="profile" screenName="tgoto63" noHeader noFooter options={{ height: 480 }} />
+              <LazyLoad >
+                <TwitterTimelineEmbed
+                  sourceType="profile"
+                  screenName="tgoto63"
+                  noHeader
+                  noFooter
+                  options={{ height: 520 }}
+                />
               </LazyLoad>
             </div>
             <div>
@@ -150,12 +167,30 @@ export default class IndexPage extends React.Component<Props> {
                     aria-label={edge.node.title}
                     rel="noopener"
                     target="_blank"
-                    style={{ color: '#ffffff' }}
                   >
                     {edge.node.title}
                   </a>
                 </p>
               ))}
+            </div>
+            <div>
+            </div>
+            <div>
+              <h3>Note</h3>
+              {
+                noteEntries.edges.map(edge => (
+                  <p>
+                    <a
+                      href={edge.node.link}
+                      aria-label={edge.node.title}
+                      rel="noopener"
+                      target="_blank"
+                    >
+                      {edge.node.title}
+                    </a>
+                  </p>
+                ))
+              }
             </div>
           </div>
         </Section>
@@ -226,6 +261,14 @@ export const query = graphql`
             name
           }
           uniqueSlug
+        }
+      }
+    }
+    allAtomEntry {
+      edges {
+        node {
+          title
+          link
         }
       }
     }
